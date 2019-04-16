@@ -1,1 +1,1 @@
-Insert into boniusr.KUNDENAUSKUNFT (ID, CREATEDBY, CREATEDDATE, LASTMODIFIEDBY, LASTMODIFIEDDATE, Version, LetzteQuelle, Mandant) Values ('$kndAuskuftId', '$uId', TIMESTAMP('$tsInsert'), '$uId', TIMESTAMP('$tsInsert'), 0, 'Schufa', 'WV') 
+Insert into boniusr.KUNDENAUSKUNFT (ID, CREATEDBY, CREATEDDATE, LASTMODIFIEDBY, LASTMODIFIEDDATE, Version, LetzteQuelle, Mandant) Values ('$kndAuskuftId', '$uId', TIMESTAMP('$tsInsert'), '$uId', TIMESTAMP('$tsInsert'), $version, '$quelle', '$mandant') 

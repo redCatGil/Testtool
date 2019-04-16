@@ -31,12 +31,15 @@ public class TestDatenGeneratorSQL {
 		Template t = ve.getTemplate("resources/main/sql/SchufaTestDaten.vm");
 		/* create a context and add data */
 		VelocityContext context = new VelocityContext();
-		String kndAuskUuid = UUID.randomUUID().toString();
-		context.put("kndAuskuftId", kndAuskUuid);
-		Werkzeugkasten.fuellenWertevorrat();
+//		String kndAuskUuid = UUID.randomUUID().toString();
+//		String now = sdf.format(Calendar.getInstance().getTime());
+		Werkzeugkasten.fuellenWertevorrat("resources/main/xml/insertBoni1.xml");
 		context.put("uId", Werkzeugkasten.wertevorrat.get("UID"));
-		String now = sdf.format(Calendar.getInstance().getTime());
-		context.put("tsInsert", now);
+		context.put("version", Werkzeugkasten.wertevorrat.get("Version"));
+		context.put("mandant", Werkzeugkasten.wertevorrat.get("Mandant"));
+		context.put("quelle", Werkzeugkasten.wertevorrat.get("Quelle"));
+		context.put("kndAuskuftId", Werkzeugkasten.wertevorrat.get("ID_KAuskunft"));
+		context.put("tsInsert", Werkzeugkasten.wertevorrat.get("TS_Insert"));
 		/* now render the template into a StringWriter */
 		StringWriter writer = new StringWriter();
 		t.merge(context, writer);

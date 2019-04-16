@@ -3,7 +3,12 @@
 <properties version="1.0">
 	<comment>Query um einen neuen Satz in den Boni-DB einzufügen</comment>
 	<entry key="Name">insertBoni1</entry>
-	<entry key="UID">ddc1tf</entry>
+	<entry key="UID">DDC1TF</entry>
 	<entry key="Quelle">Schufa</entry>
 	<entry key="Mandant">WV</entry>
+	<entry key="TS_Insert">now</entry>
+	<entry key="TS_Guel_Ab">now_date</entry>
+	<entry key="TS_Update">%%TS_Insert</entry>
+	<entry key="ID_KAuskunft">new</entry>
+	<entry key="ID_KDaten">new</entry>
 </properties>

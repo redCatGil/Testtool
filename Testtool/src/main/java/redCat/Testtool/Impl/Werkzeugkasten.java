@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.UUID;
 
 public class Werkzeugkasten {
 
@@ -50,6 +51,30 @@ public class Werkzeugkasten {
 		return rueckgabe;
 	}
 	
+	private static String fuellenID(String wert) {
+		String rueckgabe = null;
+		if (wert == null) {
+			rueckgabe = "<unbekannt>";
+		} else {
+			//Sonderformate
+			//neue ID
+			if (wert.equals("new")) {
+				rueckgabe = UUID.randomUUID().toString();
+			}
+			//Rückbezug auf andere ID
+			if (wert.substring(0, 2).equals("%%")) {
+				System.out.println("Rückbezug: " + wert.substring(2));
+				rueckgabe = wertevorrat.get(wert.substring(2));
+				if (rueckgabe == null) {
+					rueckgabe = "<Rückbezugsfehler!!>";
+				}				
+			}
+		}
+		System.out.println("ID: " + rueckgabe);
+		return rueckgabe;
+		
+	}
+	
 	public static void fuellenWertevorrat(String dsn) {
 		Properties props = new Properties();
 		FileInputStream inFile;
@@ -83,54 +108,33 @@ public class Werkzeugkasten {
 		
 		//User-ID
 		wertevorrat.put("UID", props.getProperty("UID","<unbekannt>"));
-		String uid = props.getProperty("UID");
-		if (uid == null) {
-			uid = "<unbekannt>";
-		}
 		
 		//Quelle
-		String quelle = props.getProperty("Quelle");
-		if (quelle == null) {
-			quelle = "<unbekannt>";
-		}
-		wertevorrat.put("Quelle", quelle);
+		wertevorrat.put("Quelle", props.getProperty("Quelle", "<unbekannt>"));
 		
 		//Mandant
-		String mandant = props.getProperty("Mandant");
-		if (mandant == null) {
-			mandant = "<unbekannt>";
-		}
-		wertevorrat.put("Mandant", mandant);
+		wertevorrat.put("Mandant", props.getProperty("Mandant", "<unbekannt>"));
 		
 		//Version
-		String version = props.getProperty("Version");
-		if (version == null) {
-			version = "0";
-		}
-		wertevorrat.put("Version", version);
+		wertevorrat.put("Version", props.getProperty("Version", "0"));
 		
 		//TS-Insert
 		String ts_insert = fuellenTS(props.getProperty("TS_Insert"));
-//		if (ts_insert == null) {
-//			ts_insert = "<unbekannt>";
-//		} else {
-//			if (ts_insert.equals("now")) {
-//				ts_insert = sdf.format(Calendar.getInstance().getTime());
-//			}
-//			if (ts_insert.equals("now_date")) {
-//				ts_insert = sdf_date.format(Calendar.getInstance().getTime());
-//			}
-//		}
+
 		System.out.println("TS: " + ts_insert);
 		wertevorrat.put("TS_Insert", ts_insert);
 		
 		//TS-Update
-		String ts_update = fuellenTS(props.getProperty("TS_Update"));
-		wertevorrat.put("TS_Update", ts_update);
+		wertevorrat.put("TS_Update", fuellenTS(props.getProperty("TS_Update")));
 		
 		//TS-Guel-Ab
-		String ts_guel_ab = fuellenTS(props.getProperty("TS_Guel_Ab"));
-		wertevorrat.put("TS_Guel_Ab", ts_guel_ab);
+		wertevorrat.put("TS_Guel_Ab", fuellenTS(props.getProperty("TS_Guel_Ab")));
+		
+		//ID Kundenauskunft
+		wertevorrat.put("ID_KAuskunft", fuellenID(props.getProperty("ID_KAuskunft")));
+		
+		//ID Kundendaten
+		wertevorrat.put("ID_KDaten", fuellenID(props.getProperty("ID_KDaten")));
 	}
 
 }
