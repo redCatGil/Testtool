@@ -13,6 +13,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
 
+import redCat.Testtool.Enum.Datentypen;
+
 public class Werkzeugkasten {
 
 	public Werkzeugkasten() {
@@ -135,6 +137,92 @@ public class Werkzeugkasten {
 		
 		//ID Kundendaten
 		wertevorrat.put("ID_KDaten", fuellenID(props.getProperty("ID_KDaten")));
+	}
+	
+	public static void fuellenWertevorrat_var(String dsn) {
+		
+		Properties props = new Properties();
+		FileInputStream inFile;
+		
+		//Properties-File versuchen zu öffnen
+		try {
+			inFile = new FileInputStream(dsn);
+			 props.loadFromXML(inFile);
+		//File nicht gefunden
+		} catch (FileNotFoundException e) {
+			System.err.println("Die XML-Datei " +dsn+" wurde nicht gefunden!");
+			e.printStackTrace();
+		//Props-Format passt nicht
+		} catch (InvalidPropertiesFormatException e) {
+			System.err.println("Das Format passt nicht. Bitte Datei "+dsn+" prüfen");
+			e.printStackTrace();
+		//Fehler beim öffen / lesen der XML-Datei
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println("Fehler beim öffen / lesen der XML-Datei "+dsn);
+			e.printStackTrace();
+		}
+		
+		//Map füllen mit Werten aus der Propertie-Datei bzw. mit erzeugten Werten
+		wertevorrat = new HashMap<String, String>();
+		
+		Set<String> inhalt = props.stringPropertyNames();
+		for (Iterator<String> iterator = inhalt.iterator(); iterator.hasNext();) {
+			String key = (String) iterator.next();
+			System.out.println(key);
+			//Typ extrahieren
+			String typ = key.substring(0,key.indexOf("."));
+			String name = key.substring(key.indexOf(".") + 1);
+			System.out.println("Typ: " + typ + " Name " + name);
+			//Verarbeitung je nach Typ
+			Datentypen datatyp = Datentypen.valueOf(typ);
+			switch (datatyp.ordinal()) {
+			//String
+			case 0:
+				wertevorrat.put(name, props.getProperty(key,"<unbekannt>"));
+				break;
+			//TS
+			case 1:
+				wertevorrat.put(name, fuellenTS(props.getProperty(key)));
+				break;
+			//ID
+			case 2:
+				wertevorrat.put(name, fuellenID(props.getProperty(key)));
+				break;
+			default:
+				System.err.println("Es gibt einen neuen Datentypen der noch nicht bekannt ist!!!");
+				break;
+			}
+		}
+		
+	}
+	
+	public static Properties erzeugenUmsetzung(String dsn) {
+		
+		Properties props = new Properties();
+		FileInputStream inFile;
+		
+		//Properties-File versuchen zu öffnen
+		try {
+			inFile = new FileInputStream(dsn);
+			 props.loadFromXML(inFile);
+		//File nicht gefunden
+		} catch (FileNotFoundException e) {
+			System.err.println("Die XML-Datei " +dsn+" wurde nicht gefunden!");
+			e.printStackTrace();
+		//Props-Format passt nicht
+		} catch (InvalidPropertiesFormatException e) {
+			System.err.println("Das Format passt nicht. Bitte Datei "+dsn+" prüfen");
+			e.printStackTrace();
+		//Fehler beim öffen / lesen der XML-Datei
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println("Fehler beim öffen / lesen der XML-Datei "+dsn);
+			e.printStackTrace();
+		}
+		
+		return props;
+		
 	}
 
 }

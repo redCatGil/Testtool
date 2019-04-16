@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+	<comment>Query um einen neuen Satz in den Boni-DB einzufügen</comment>
+	<entry key="String.Name">insertBoni2</entry>
+	<entry key="String.UID">DDC1TF</entry>
+	<entry key="String.Quelle">Schufa</entry>
+	<entry key="String.Mandant">WV</entry>
+	<entry key="String.Version">0</entry>
+	<entry key="TS.TS_Insert">now</entry>
+	<entry key="TS.TS_Guel_Ab">now_date</entry>
+	<entry key="TS.TS_Update">now</entry>
+	<entry key="ID.ID_KAuskunft">new</entry>
+	<entry key="ID.ID_KDaten">new</entry>
+</properties>

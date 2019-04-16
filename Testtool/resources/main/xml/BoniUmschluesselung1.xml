@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+	<comment>Zuordnungsbeziehung Velocity-Name -- Map-Name</comment>
+	<!--entry key="Name">BoniUmschlüsselung1</entry>  -->
+	<entry key="uId">UID</entry>
+	<entry key="quelle">Quelle</entry>
+	<entry key="mandant">Mandant</entry>
+	<entry key="version">Version</entry>
+	<entry key="tsInsert">TS_Insert</entry>
+	<entry key="kndAuskuftId">ID_KAuskunft</entry>
+</properties>
