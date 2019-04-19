@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GeneratorEingabe>
+	<Info>hier kommte ien kurze Beschreibung rein, was mit dem XML-File
+		erreicht werden soll</Info>
+	<VeloFile>Pfad zum Template und Dateiname</VeloFile>
+	<AttributDefs>
+		<Attribut>
+			<Typ>ID</Typ>
+			<TemplateName>kdnAuskunftId</TemplateName>
+			<Wert>new</Wert>
+		</Attribut>
+		<Attribut>
+			<Typ>String</Typ>
+			<TemplateName>uId</TemplateName>
+			<Wert>Kevin</Wert>
+		</Attribut>
+		<Attribut>
+			<Typ>TS</Typ>
+			<TemplateName>tsInsert</TemplateName>
+			<Wert>nowe</Wert>
+		</Attribut>
+	</AttributDefs>
+</GeneratorEingabe>

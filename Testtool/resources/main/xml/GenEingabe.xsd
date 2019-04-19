@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/GenEingabe" xmlns:tns="http://www.example.org/GenEingabe" elementFormDefault="qualified">
+
+  <element name="GeneratorEingabe" type="tns:GeneratorEingabeType"></element>
+  
+    <complexType name="GeneratorEingabeType">
+    	<sequence>
+    		<element name="Info" type="string"></element>
+    		<element name="VeloFile" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="AttributDef" type="tns:AttributDefType" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="AttributType">
+    	<sequence>
+    		<element name="Typ" minOccurs="1" maxOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="ID"></enumeration>
+    					<enumeration value="TS"></enumeration>
+    					<enumeration value="String"></enumeration>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="TemplateName" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="Wert" type="string" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <simpleType name="Typen">
+    	<restriction base="string">
+    		<enumeration value="ID, TS, String"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <complexType name="AttributDefType">
+    	<sequence>
+    		<element name="Attribut" type="tns:AttributType" minOccurs="1" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+  
+</schema>
