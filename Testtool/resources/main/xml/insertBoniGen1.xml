@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:generatorEingabeType xmlns="http://www.example.org/GenEingabe" xmlns:ns2="https://redCatGil/tools/SqlGen.org">
+    <Info>erstes XML für Generatorentest</Info>
+    <VeloFile>resources/main/sql/SchufaTestDaten.vm</VeloFile>
+    <AttributDef>
+        <Attribut>
+            <Typ>String</Typ>
+            <TemplateName>uId</TemplateName>
+            <Wert>ddc1tf</Wert>
+        </Attribut>
+        <Attribut>
+            <Typ>String</Typ>
+            <TemplateName>version</TemplateName>
+            <Wert>0</Wert>
+        </Attribut>
+        <Attribut>
+            <Typ>String</Typ>
+            <TemplateName>mandant</TemplateName>
+            <Wert>WV</Wert>
+        </Attribut>
+        <Attribut>
+            <Typ>String</Typ>
+            <TemplateName>quelle</TemplateName>
+            <Wert>Schufa</Wert>
+        </Attribut>
+        <Attribut>
+            <Typ>TS</Typ>
+            <TemplateName>tsInsert</TemplateName>
+            <Wert>now</Wert>
+        </Attribut>
+        <Attribut>
+            <Typ>ID</Typ>
+            <TemplateName>kndAuskuftId</TemplateName>
+            <Wert>new</Wert>
+        </Attribut>
+    </AttributDef>
+</ns2:generatorEingabeType>

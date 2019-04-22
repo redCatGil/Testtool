@@ -77,6 +77,26 @@ public class Werkzeugkasten {
 		
 	}
 	
+	public static String fuellenAusAttribut(AttributType attribut) {
+		//Verarbeitung je nach Typ
+		Datentypen datatyp = Datentypen.valueOf(attribut.getTyp());
+		switch (datatyp.ordinal()) {
+		//String
+		case 0:
+			return attribut.getWert();
+		//TS
+		case 1:
+			return fuellenTS(attribut.getWert());
+		//ID
+		case 2:
+			return fuellenID(attribut.getWert());
+		default:
+			System.err.println("Es gibt einen neuen Datentypen der noch nicht bekannt ist!!! ==> " +attribut.getTyp());
+			return null;
+		}
+		
+	}
+	
 	public static void fuellenWertevorrat(String dsn) {
 		Properties props = new Properties();
 		FileInputStream inFile;
