@@ -27,9 +27,9 @@ public class Werkzeugkasten {
 	private static SimpleDateFormat sdf_date = new SimpleDateFormat("yyyy-MM-dd 00:00:00.000");
 	
 	private static String fuellenTS(String wert) {
-		String rueckgabe = null;
+		String rueckgabe = wert;
 		if (wert == null) {
-			rueckgabe = "<unbekannt>";
+			rueckgabe =  "<unbekannt>";
 		} else {
 			//Sonderformate
 			//aktueller Timestamp
@@ -54,7 +54,7 @@ public class Werkzeugkasten {
 	}
 	
 	private static String fuellenID(String wert) {
-		String rueckgabe = null;
+		String rueckgabe = wert;
 		if (wert == null) {
 			rueckgabe = "<unbekannt>";
 		} else {
