@@ -1,0 +1,1 @@
+Insert into boniusr.KUNDENAUSKUNFT (ID, CREATEDBY, CREATEDDATE, LASTMODIFIEDBY, LASTMODIFIEDDATE, Version, LetzteQuelle, Mandant) Values ('5eaaa901-011e-4de6-8107-f31736d24e1f', 'ddc1tf', TIMESTAMP('2019-04-23 18:26:46.484'), 'ddc1tf', TIMESTAMP('2019-04-23 18:26:46.484'), 0, 'Schufa', 'WV') 

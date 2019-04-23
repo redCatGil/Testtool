@@ -1,6 +1,10 @@
 package redCat.Testtool.Impl;
 
+import java.io.IOException;
 import java.io.StringWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -52,6 +56,16 @@ public class TestDatenGeneratorSQLXml {
 			t.merge(context, writer);
 			/* show the World */
 			System.out.println(writer.toString());
+			Path pathout = Paths.get("resources/main/xml/insertBoniGen1.txt");
+			try {
+				Writer out = Files.newBufferedWriter(pathout, StandardCharsets.UTF_8);
+				out.write(writer.toString());
+				out.close();
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 	
